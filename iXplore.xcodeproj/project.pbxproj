@@ -13,6 +13,7 @@
 		6A46F6E61D33FC9200A2C258 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A46F6E41D33FC9200A2C258 /* MapViewController.swift */; };
 		6A46F6E71D33FC9200A2C258 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A46F6E51D33FC9200A2C258 /* MapViewController.xib */; };
 		6A46F6E91D34015900A2C258 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A46F6E81D34015900A2C258 /* MapKit.framework */; };
+		6A46F6EB1D343CD700A2C258 /* JournalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A46F6EA1D343CD700A2C258 /* JournalEntryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6A46F6E41D33FC9200A2C258 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = ../MapViewController.swift; sourceTree = "<group>"; };
 		6A46F6E51D33FC9200A2C258 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = ../MapViewController.xib; sourceTree = "<group>"; };
 		6A46F6E81D34015900A2C258 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6A46F6EA1D343CD700A2C258 /* JournalEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalEntryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				6A46F6E41D33FC9200A2C258 /* MapViewController.swift */,
 				6A46F6E51D33FC9200A2C258 /* MapViewController.xib */,
 				6A46F6DE1D33FB3200A2C258 /* Info.plist */,
+				6A46F6EA1D343CD700A2C258 /* JournalEntryViewController.swift */,
 			);
 			path = iXplore;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			files = (
 				6A46F6D31D33FB3200A2C258 /* AppDelegate.swift in Sources */,
 				6A46F6E61D33FC9200A2C258 /* MapViewController.swift in Sources */,
+				6A46F6EB1D343CD700A2C258 /* JournalEntryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

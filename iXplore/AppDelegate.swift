@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let mapViewController = MapViewController(nibName: "MapViewController", bundle: nil)
         navigationController = UINavigationController(rootViewController: mapViewController)
-        navigationController.navigationBarHidden = true
+//        navigationController.navigationBarHidden = true
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = navigationController

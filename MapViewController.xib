@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="iXplore" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="aeA-gO-7VM" id="DVo-WA-GSz"/>
+                <outlet property="tableView" destination="Xlh-6p-rEF" id="Zz3-dW-cpk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
