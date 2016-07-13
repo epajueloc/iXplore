@@ -9,16 +9,41 @@
 import UIKit
 import MapKit
 
-class JournalEntry: NSObject, MKAnnotation {
-    var title:String? = ""
-    var notes:String? = ""
-    var date:String? = ""
-    var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
+class JournalEntry: NSObject, NSCoding, MKAnnotation {
+    var title:String?
+    var notes:String?
+    var date:NSDate?
+    var coordinate:CLLocationCoordinate2D
+    
+    init(title:String, notes:String, date:NSDate, coordinate:CLLocationCoordinate2D) {
+        self.title = title
+        self.notes = notes
+        self.date = date
+        self.coordinate = coordinate
+    }
+    
+    required init?(coder: NSCoder) {
+        title = (coder.decodeObjectForKey("title") as? String) ?? ""
+        notes = (coder.decodeObjectForKey("notes") as? String) ?? ""
+        date = (coder.decodeObjectForKey("date") as? NSDate) ?? nil
+        coordinate = CLLocationCoordinate2D(latitude: coder.decodeObjectForKey("latitude") as? CLLocationDegrees ?? CLLocationDegrees(), longitude: coder.decodeObjectForKey("longitude") as? CLLocationDegrees ?? CLLocationDegrees())
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        coder.encodeObject(title, forKey: "title")
+        coder.encodeObject(notes, forKey: "notes")
+        coder.encodeObject(coordinate.latitude, forKey: "latitude")
+        coder.encodeObject(coordinate.longitude, forKey: "longitude")
+
+    }
+    
 }
 
 class JournalEntryViewController: UIViewController {
     
     static let sharedInstance = JournalEntryViewController()
+    
+    var array = [JournalEntry(title: "Cape Town", notes: "Summer 2016", date: NSDate(), coordinate: CLLocationCoordinate2D(latitude: -33.9249, longitude: 18.4241)), JournalEntry(title: "London", notes: "Summer 2017", date: NSDate(), coordinate: CLLocationCoordinate2D(latitude: 51.5074, longitude: -0.1278)), JournalEntry(title: "Paris", notes: "Summer 2018", date: NSDate(), coordinate: CLLocationCoordinate2D(latitude: 48.8566, longitude: 2.3522))]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,32 +55,6 @@ class JournalEntryViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func returnArray() -> [JournalEntry] {
-        
-        let entry1 = JournalEntry()
-        entry1.title = "Cape Town"
-        entry1.notes = "Summer 2016"
-        entry1.date = "Monday Jul 11, 2016"
-        entry1.coordinate = CLLocationCoordinate2D(latitude: -33.9249, longitude: 18.4241)
-        
-        let entry2 = JournalEntry()
-        entry2.title = "London"
-        entry2.notes = "Summer 2017"
-        entry2.date = "Friday Jul 19, 2017"
-        entry2.coordinate = CLLocationCoordinate2D(latitude: 51.5074, longitude: -0.1278)
-        
-        let entry3 = JournalEntry()
-        entry3.title = "Paris"
-        entry3.notes = "Summer 2018"
-        entry3.date = "Friday Nov 9, 2018"
-        entry3.coordinate = CLLocationCoordinate2D(latitude: 48.8566, longitude: 2.3522)
-        
-        let array: [JournalEntry] = [entry1, entry2, entry3]
-        
-        return array
-    }
-    
 
     /*
     // MARK: - Navigation

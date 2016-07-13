@@ -15,6 +15,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     @IBOutlet weak var mapView: MKMapView!
     
+    func addButtonTapped(sender: UIBarButtonItem) {
+        let entriesViewController = EntriesViewController(nibName: "EntriesViewController", bundle: nil)
+        self.presentViewController(entriesViewController, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,17 +27,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         tableView.delegate = self
         mapView.delegate = self
         
-        mapView.addAnnotations(JournalEntryViewController.sharedInstance.returnArray())
+        mapView.addAnnotations(JournalEntryViewController.sharedInstance.array)
         
-
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector())
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addButtonTapped))
         
         self.navigationItem.title = "iXplore"
         self.navigationItem.rightBarButtonItem = addButton
-        
-        
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +47,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
-        return JournalEntryViewController.sharedInstance.returnArray().count
+        return JournalEntryViewController.sharedInstance.array.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -54,14 +60,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
             cell = UITableViewCell(style: .Default, reuseIdentifier: indentifier)
         }
         
-        cell!.textLabel?.text = String!(JournalEntryViewController.sharedInstance.returnArray()[indexPath.row].title)
+        cell!.textLabel?.text = String!(JournalEntryViewController.sharedInstance.array[indexPath.row].title)
         
         return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let selectedLocation: CLLocationCoordinate2D = JournalEntryViewController.sharedInstance.returnArray()[indexPath.row].coordinate
+        let selectedLocation: CLLocationCoordinate2D = JournalEntryViewController.sharedInstance.array[indexPath.row].coordinate
         
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegion(center: selectedLocation, span: span)
